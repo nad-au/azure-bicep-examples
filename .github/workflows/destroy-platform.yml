@@ -1,0 +1,26 @@
+name: Destroy Platform resources (definitely don't run this!!!)
+
+on: workflow_dispatch
+
+env:
+  PLATFORM_RESOURCE_GROUP: rg-bicep-examples-plat
+  AZ_CREDS: ${{ secrets.NIU_SEC_SP_SHARED }}
+  AZ_CLI_VERSION: 2.37.0
+
+jobs:
+  delete:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Azure login
+        uses: azure/login@v1
+        with:
+          creds: ${{ env.AZ_CREDS }}
+
+      - name: Delete Resource Group
+        uses: azure/CLI@v1
+        with:
+          azcliversion: ${{ env.AZ_CLI_VERSION }}
+          inlineScript: |
+            az group delete --name ${{ env.PLATFORM_RESOURCE_GROUP }} --yes

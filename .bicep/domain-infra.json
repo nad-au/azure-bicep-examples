@@ -1,0 +1,37 @@
+{
+  "keyVault": {
+    "name": "kv-bicep-examples",
+    "sku": "standard",
+    "family": "A",
+    "location": "eastus"
+  },
+  "keyVaultSecrets": {
+    "serviceBusConnectionString": "servicebus-connection",
+    "appStorageConnectionString": "app-storage-connection"
+  },
+  "cosmosSqlDatabase": {
+    "name": "csql-bicep-examples"
+  },
+  "cosmosSqlContainer": {
+    "name": "csql-container-bicep-examples",
+    "partitionKeyPath": "/id",
+    "partitionKeyKind": "Hash"
+  },
+  "storage": {
+    "name": "storagebcpexamplesdomain",
+    "kind": "StorageV2",
+    "sku": "Standard_LRS",
+    "location": "eastus"
+  },
+  "servicebus": {
+    "name": "sb-bicep-examples",
+    "sku": "Standard",
+    "tier": "Standard",
+    "location": "eastus"
+  },
+  "containerAppsEnv": {
+    "name": "cae-bicep-examples",
+    "sku": "Standard",
+    "location": "eastus"
+  }
+}

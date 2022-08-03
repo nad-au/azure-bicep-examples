@@ -1,0 +1,15 @@
+version: '3'
+services:
+    # Apache PHP Service
+    appserver:
+        build:
+            context: .
+            dockerfile: Dockerfile
+        container_name: appserver
+        ports:
+            - 8080:8080
+        restart: unless-stopped
+        tty: true
+        working_dir: /home
+        environment:
+            APP_HOST: localhost:8080

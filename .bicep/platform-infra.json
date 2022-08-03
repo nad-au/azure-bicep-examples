@@ -1,0 +1,53 @@
+{
+  "containerRegistry": {
+    "name": "acrbicepexamples",
+    "sku": "Basic",
+    "location": "eastus"
+  },
+  "keyVault": {
+    "name": "kv-bicep-examples-plat",
+    "sku": "standard",
+    "family": "A",
+    "location": "eastus"
+  },
+  "keyVaultSecrets": {
+    "databaseUsername": "db-username",
+    "databasePassword": "db-password",
+    "databaseHost": "db-host",
+    "cosmosConnectionString": "cosmos-connection",
+    "containerRegistryUsername": "acr-username",
+    "containerRegistryPassword": "acr-password"
+  },
+  "logAnalytics": {
+    "name": "logs-bicep-examples-plat",
+    "sku": "PerGB2018",
+    "retentionInDays": 30,
+    "location": "eastus"
+  },
+  "cosmos": {
+    "name": "cosmos-bicep-examples-plat",
+    "kind": "GlobalDocumentDB",
+    "databaseAccountOfferType": "Standard",
+    "defaultConsistencyLevel": "Session",
+    "capabilities": "EnableServerless",
+    "location": "eastus"
+  },
+  "postgres": {
+    "name": "pg-bcp-examples1-plat",
+    "username": "bicepexamples",
+    "sku": "B_Gen5_2",
+    "tier": "Basic",
+    "family": "Gen5",
+    "size": 10240,
+    "capacity": 2,
+    "version": "11",
+    "location": "eastus"
+  },
+  "dnsZone": {
+    "name": "housesdaily.au"
+  },
+  "frontDoorProfile": {
+    "name": "fd-bicep-examples-plat",
+    "sku": "Standard_AzureFrontDoor"
+  }
+}

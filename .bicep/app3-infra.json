@@ -1,0 +1,20 @@
+{
+  "appService": {
+    "name": "appsvc-bicep-examples-app3",
+    "planName": "splan-bicep-examples-app3",
+    "sku": "B1",
+    "location": "eastus"
+  },
+  "postgresDatabase": {
+    "name": "app3"
+  },
+  "frontDoorEndpoint": {
+    "name": "app3",
+    "originGroupName": "app3-origin-group",
+    "originName": "app3-origin",
+    "routeName": "app3-route",
+    "hostName": "app3.housesdaily.au",
+    "cname": "app3",
+    "apex": false
+  }
+}

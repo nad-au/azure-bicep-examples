@@ -1,0 +1,23 @@
+{
+  "containerApp": {
+    "name": "ca-bicep-examples-app1",
+    "location": "eastus",
+    "ingressExternal": true,
+    "ingressPort": 3000,
+    "containerName": "app1",
+    "cpu": "0.5",
+    "memory": "1.0Gi"
+  },
+  "postgresDatabase": {
+    "name": "app1"
+  },
+  "frontDoorEndpoint": {
+    "name": "app1",
+    "originGroupName": "app1-origin-group",
+    "originName": "app1-origin",
+    "routeName": "app1-route",
+    "hostName": "app1.housesdaily.au",
+    "cname": "app1",
+    "apex": false
+  }
+}

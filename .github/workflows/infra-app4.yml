@@ -1,0 +1,35 @@
+name: Provision App4 resources with Bicep
+
+on: workflow_dispatch
+
+env:
+  PLATFORM_RESOURCE_GROUP: rg-bicep-examples-plat
+  DOMAIN_RESOURCE_GROUP: rg-bicep-examples-dmn
+  SUBSCRIPTION_ID: ${{ secrets.SUBSCRIPTION_ID }}
+  AZ_CREDS: ${{ secrets.NIU_SEC_SP_SHARED }}
+  AZ_LOCATION: eastus
+  AZ_CLI_VERSION: 2.37.0
+  BICEP_TEMPLATE: .bicep/app4-infra.bicep
+
+jobs:
+  create-resources:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Azure login
+        uses: azure/login@v1
+        with:
+          creds: ${{ env.AZ_CREDS }}
+
+      - name: Provision resources
+        uses: azure/arm-deploy@v1
+        id: provision
+        with:
+          scope: subscription
+          region: ${{ env.AZ_LOCATION }}
+          subscriptionId: ${{ env.SUBSCRIPTION_ID }}
+          template: ${{ env.BICEP_TEMPLATE }}
+          parameters: >
+            platformResourceGroup=${{ env.PLATFORM_RESOURCE_GROUP }}
+            domainResourceGroup=${{ env.DOMAIN_RESOURCE_GROUP }}

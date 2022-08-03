@@ -1,0 +1,57 @@
+name: Provision Platform resources with Bicep
+
+on: workflow_dispatch
+
+env:
+  PLATFORM_RESOURCE_GROUP: rg-bicep-examples-plat
+  SUBSCRIPTION_ID: ${{ secrets.SUBSCRIPTION_ID }}
+  SUBSCRIPTION_NAME: ${{ secrets.SUBSCRIPTION_NAME }}
+  AZ_CREDS: ${{ secrets.NIU_SEC_SP_SHARED }}
+  AZ_LOCATION: eastus
+  AZ_CLI_VERSION: 2.37.0
+  BICEP_TEMPLATE: .bicep/platform-infra.bicep
+  POSTGRES_PASSWORD: ${{ secrets.POSTGRES_PASSWORD }}
+
+jobs:
+  create-resources:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Azure login
+        uses: azure/login@v1
+        with:
+          creds: ${{ env.AZ_CREDS }}
+
+      - name: Create Resource Group
+        uses: azure/CLI@v1
+        with:
+          azcliversion: ${{ env.AZ_CLI_VERSION }}
+          inlineScript: |
+            az group create --name ${{ env.PLATFORM_RESOURCE_GROUP }} --location ${{ env.AZ_LOCATION }}
+
+      - name: Provision resources
+        uses: azure/arm-deploy@v1
+        id: provision
+        with:
+          scope: resourcegroup
+          subscriptionId: ${{ env.SUBSCRIPTION_ID }}
+          resourceGroupName: ${{ env.PLATFORM_RESOURCE_GROUP }}
+          template: ${{ env.BICEP_TEMPLATE }}
+          parameters: "postgresPassword=${{ env.POSTGRES_PASSWORD }}"
+
+      - name: Retrieve SP App Id
+        uses: azure/CLI@v1
+        id: getappid
+        with:
+          azcliversion: ${{ env.AZ_CLI_VERSION }}
+          inlineScript: |
+            echo "::set-output name=APP_ID::$(az ad sp list --display-name ${{ env.SUBSCRIPTION_NAME }} | jq '.[].appId')"
+
+      - name: Set Key Vault Policy
+        uses: azure/CLI@v1
+        id: setkvpolicy
+        with:
+          azcliversion: ${{ env.AZ_CLI_VERSION }}
+          inlineScript: |
+            az keyvault set-policy -n ${{ steps.provision.outputs.keyVaultName }} --secret-permissions get list --spn ${{ steps.getappid.outputs.APP_ID }}
