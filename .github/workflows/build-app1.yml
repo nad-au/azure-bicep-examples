@@ -12,7 +12,7 @@ env:
   PLATFORM_RESOURCE_GROUP: rg-bicep-examples-plat
   DOMAIN_RESOURCE_GROUP: rg-bicep-examples-dmn
   SUBSCRIPTION_ID: ${{ secrets.SUBSCRIPTION_ID }}
-  AZ_CREDS: ${{ secrets.NIU_SEC_SP_SHARED }}
+  AZ_CREDS: ${{ secrets.AZ_CREDS }}
   AZ_LOCATION: australiaeast
   KEY_VAULT: kv-bicep-examples-plat
   ACR_HOST: acrbicepexamples.azurecr.io

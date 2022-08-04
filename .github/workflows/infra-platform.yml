@@ -6,7 +6,7 @@ env:
   PLATFORM_RESOURCE_GROUP: rg-bicep-examples-plat
   SUBSCRIPTION_ID: ${{ secrets.SUBSCRIPTION_ID }}
   SP_NAME: ${{ secrets.SP_NAME }}
-  AZ_CREDS: ${{ secrets.NIU_SEC_SP_SHARED }}
+  AZ_CREDS: ${{ secrets.AZ_CREDS }}
   AZ_LOCATION: australiaeast
   AZ_CLI_VERSION: 2.37.0
   BICEP_TEMPLATE: .bicep/platform-infra.bicep

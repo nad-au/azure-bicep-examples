@@ -4,7 +4,7 @@ on: workflow_dispatch
 
 env:
   DOMAIN_RESOURCE_GROUP: rg-bicep-examples-dmn
-  AZ_CREDS: ${{ secrets.NIU_SEC_SP_SHARED }}
+  AZ_CREDS: ${{ secrets.AZ_CREDS }}
   AZ_CLI_VERSION: 2.37.0
 
 jobs:
