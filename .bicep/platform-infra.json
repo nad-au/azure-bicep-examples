@@ -2,13 +2,13 @@
   "containerRegistry": {
     "name": "acrbicepexamples",
     "sku": "Basic",
-    "location": "eastus"
+    "location": "australiaeast"
   },
   "keyVault": {
     "name": "kv-bicep-examples-plat",
     "sku": "standard",
     "family": "A",
-    "location": "eastus"
+    "location": "australiaeast"
   },
   "keyVaultSecrets": {
     "databaseUsername": "db-username",
@@ -22,7 +22,7 @@
     "name": "logs-bicep-examples-plat",
     "sku": "PerGB2018",
     "retentionInDays": 30,
-    "location": "eastus"
+    "location": "australiaeast"
   },
   "cosmos": {
     "name": "cosmos-bicep-examples-plat",
@@ -30,7 +30,7 @@
     "databaseAccountOfferType": "Standard",
     "defaultConsistencyLevel": "Session",
     "capabilities": "EnableServerless",
-    "location": "eastus"
+    "location": "australiaeast"
   },
   "postgres": {
     "name": "pg-bcp-examples1-plat",
@@ -41,7 +41,15 @@
     "size": 10240,
     "capacity": 2,
     "version": "11",
-    "location": "eastus"
+    "location": "australiaeast"
+  },
+  "postgresFlex": {
+    "name": "pg-bcp-examples1-plat",
+    "username": "bicepexamples",
+    "sku": "Standard_B1ms",
+    "tier": "Burstable",
+    "version": "14",
+    "location": "australiaeast"
   },
   "dnsZone": {
     "name": "housesdaily.au"

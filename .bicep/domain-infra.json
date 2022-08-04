@@ -3,7 +3,7 @@
     "name": "kv-bicep-examples",
     "sku": "standard",
     "family": "A",
-    "location": "eastus"
+    "location": "australiaeast"
   },
   "keyVaultSecrets": {
     "serviceBusConnectionString": "servicebus-connection",
@@ -21,17 +21,17 @@
     "name": "storagebcpexamplesdomain",
     "kind": "StorageV2",
     "sku": "Standard_LRS",
-    "location": "eastus"
+    "location": "australiaeast"
   },
   "servicebus": {
     "name": "sb-bicep-examples",
     "sku": "Standard",
     "tier": "Standard",
-    "location": "eastus"
+    "location": "australiaeast"
   },
   "containerAppsEnv": {
     "name": "cae-bicep-examples",
     "sku": "Standard",
-    "location": "eastus"
+    "location": "australiaeast"
   }
 }

@@ -8,9 +8,10 @@ env:
   SUBSCRIPTION_ID: ${{ secrets.SUBSCRIPTION_ID }}
   SUBSCRIPTION_NAME: ${{ secrets.SUBSCRIPTION_NAME }}
   AZ_CREDS: ${{ secrets.NIU_SEC_SP_SHARED }}
-  AZ_LOCATION: eastus
+  AZ_LOCATION: australiaeast
   AZ_CLI_VERSION: 2.37.0
   BICEP_TEMPLATE: .bicep/domain-infra.bicep
+  DEPLOYMENT_NAME: dp-domain-infra-au
 
 jobs:
   create-resources:
@@ -34,6 +35,7 @@ jobs:
         uses: azure/arm-deploy@v1
         id: provision
         with:
+          deploymentName: ${{ env.DEPLOYMENT_NAME }}
           scope: subscription
           region: ${{ env.AZ_LOCATION }}
           subscriptionId: ${{ env.SUBSCRIPTION_ID }}

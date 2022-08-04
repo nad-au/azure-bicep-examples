@@ -13,11 +13,12 @@ env:
   DOMAIN_RESOURCE_GROUP: rg-bicep-examples-dmn
   SUBSCRIPTION_ID: ${{ secrets.SUBSCRIPTION_ID }}
   AZ_CREDS: ${{ secrets.NIU_SEC_SP_SHARED }}
-  AZ_LOCATION: eastus
+  AZ_LOCATION: australiaeast
   KEY_VAULT: kv-bicep-examples-plat
   ACR_HOST: acrbicepexamples.azurecr.io
   DOCKER_IMAGE: app2
   BICEP_TEMPLATE: .bicep/app2-infra.bicep
+  DEPLOYMENT_NAME: dp-app2-au
 
 jobs:
   build:
@@ -64,6 +65,7 @@ jobs:
         uses: azure/arm-deploy@v1
         id: provision
         with:
+          deploymentName: ${{ env.DEPLOYMENT_NAME }}
           scope: subscription
           region: ${{ env.AZ_LOCATION }}
           subscriptionId: ${{ env.SUBSCRIPTION_ID }}

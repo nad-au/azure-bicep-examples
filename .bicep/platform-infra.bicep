@@ -33,7 +33,7 @@ module cosmosAccountModule './modules/cosmos-account.bicep' = {
 module postgresServerModule './modules/postgres-flex-server.bicep' = {
   name: 'postgresServer'
   params: {
-    settings: platformInfra.postgres
+    settings: platformInfra.postgresFlex
     password: postgresPassword
     keyVaultName: keyvaultModule.outputs.name
     keyVaultSecretDbUsername: platformInfra.keyVaultSecrets.databaseUsername

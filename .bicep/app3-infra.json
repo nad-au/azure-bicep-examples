@@ -3,7 +3,7 @@
     "name": "appsvc-bicep-examples-app3",
     "planName": "splan-bicep-examples-app3",
     "sku": "B1",
-    "location": "eastus"
+    "location": "australiaeast"
   },
   "postgresDatabase": {
     "name": "app3"

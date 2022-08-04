@@ -1,7 +1,7 @@
 {
   "containerApp": {
     "name": "ca-bicep-examples-app1",
-    "location": "eastus",
+    "location": "australiaeast",
     "ingressExternal": true,
     "ingressPort": 3000,
     "containerName": "app1",
