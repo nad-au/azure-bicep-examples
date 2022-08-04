@@ -20,7 +20,7 @@ Create resources
 
 ```bash
 az group create --name rg-bicep-examples-plat --location australiaeast
-az deployment group create --name dp-platform-infra-au --resource-group rg-bicep-examples-plat --template-file .bicep/platform-infra.bicep --parameters postgresPassword=bicep.examples@2022$
+az deployment group create --name dp-platform-infra-au --resource-group rg-bicep-examples-plat --template-file .bicep/platform-infra.bicep --parameters postgresPassword=<super secure password>
 
 az group create --name rg-bicep-examples-dmn --location australiaeast
 az deployment sub create --name dp-domain-infra-au --template-file .bicep/domain-infra.bicep --location australiaeast --parameters platformResourceGroup=rg-bicep-examples-plat domainResourceGroup=rg-bicep-examples-dmn

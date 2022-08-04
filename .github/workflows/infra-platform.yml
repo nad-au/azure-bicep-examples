@@ -5,7 +5,7 @@ on: workflow_dispatch
 env:
   PLATFORM_RESOURCE_GROUP: rg-bicep-examples-plat
   SUBSCRIPTION_ID: ${{ secrets.SUBSCRIPTION_ID }}
-  SUBSCRIPTION_NAME: ${{ secrets.SUBSCRIPTION_NAME }}
+  SP_NAME: ${{ secrets.SP_NAME }}
   AZ_CREDS: ${{ secrets.NIU_SEC_SP_SHARED }}
   AZ_LOCATION: australiaeast
   AZ_CLI_VERSION: 2.37.0
@@ -48,7 +48,7 @@ jobs:
         with:
           azcliversion: ${{ env.AZ_CLI_VERSION }}
           inlineScript: |
-            echo "::set-output name=APP_ID::$(az ad sp list --display-name ${{ env.SUBSCRIPTION_NAME }} | jq '.[].appId')"
+            echo "::set-output name=APP_ID::$(az ad sp list --display-name ${{ env.SP_NAME }} | jq '.[].appId')"
 
       - name: Set Key Vault Policy
         uses: azure/CLI@v1
