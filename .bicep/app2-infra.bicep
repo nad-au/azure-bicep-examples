@@ -52,6 +52,9 @@ module containerAppModule './app2-app.bicep' = {
     storageConnection: domainKeyVault.getSecret(domainInfra.keyVaultSecrets.appStorageConnectionString)
     containerAppsName: domainInfra.containerAppsEnv.name
     containerAppSettings: app2Infra.containerApp
+    appHost: app2Infra.frontDoorEndpoint.hostName
+    appEnv: app2Infra.laravelApp.env
+    debug: app2Infra.laravelApp.debug
   }
 }
 
