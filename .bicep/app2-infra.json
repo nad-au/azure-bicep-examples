@@ -19,5 +19,9 @@
     "hostName": "app2.housesdaily.au",
     "cname": "app2",
     "apex": false
+  },
+  "laravelApp": {
+    "env": "dev",
+    "debug": true
   }
 }

@@ -48,6 +48,9 @@ module appModule './app4-app.bicep' = {
     storageConnection: domainKeyVault.getSecret(domainInfra.keyVaultSecrets.appStorageConnectionString)
     websitesPort: 8080
     appServiceSettings: app4Infra.appService
+    appHost: app4Infra.frontDoorEndpoint.hostName
+    appEnv: app4Infra.laravelApp.env
+    debug: app4Infra.laravelApp.debug
   }
 }
 

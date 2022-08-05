@@ -51,6 +51,15 @@ param storageConnection string
 @description('The name of the existing Container Apps resource')
 param containerAppsName string
 
+@description('')
+param appHost string
+
+@description('')
+param appEnv string
+
+@description('Debug mode (should be false)')
+param debug bool
+
 @description('Container Apps settings object')
 param containerAppSettings object = {
   name: ''
@@ -139,6 +148,18 @@ resource containerApp 'Microsoft.App/containerApps@2022-03-01' = {
             {
               name: 'STORAGE_CONNECTION'
               value: storageConnection
+            }
+            {
+              name: 'APP_HOST'
+              value: appHost
+            }
+            {
+              name: 'APP_ENV'
+              value: appEnv
+            }
+            {
+              name: 'DEBUG'
+              value: '${debug}'
             }
           ]
         }

@@ -46,6 +46,15 @@ param serviceBusConnection string
 param storageConnection string
 
 @description('')
+param appHost string
+
+@description('')
+param appEnv string
+
+@description('Debug mode (should be false)')
+param debug bool
+
+@description('')
 param websitesPort int
 
 @description('App Service settings object')
@@ -129,6 +138,18 @@ resource appService 'microsoft.web/sites@2021-03-01' = {
         {
           name: 'WEBSITES_PORT'
           value: '${websitesPort}'
+        }
+        {
+          name: 'APP_HOST'
+          value: appHost
+        }
+        {
+          name: 'APP_ENV'
+          value: appEnv
+        }
+        {
+          name: 'DEBUG'
+          value: '${debug}'
         }
       ]
       linuxFxVersion: 'NODE|16-lts'
