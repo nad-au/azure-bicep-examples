@@ -2,6 +2,9 @@
 
 Infrastructure as code using Azure Bicep and GitHub Actions
 
+<img src=".assets/architecture.png" style="width:700px; height:700px;"  >
+
+
 # Local Testing
 
 ```bash
